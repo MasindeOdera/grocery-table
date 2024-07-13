@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, TablePagination, Paper, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, Typography
+    Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, TablePagination, Paper, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, Box
 } from '@mui/material';
 import { GroceryItem } from './types';
 
@@ -63,64 +63,68 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, sortedItems.length - page * rowsPerPage);
 
     return (
-        <Paper sx={{ maxWidth: 800 }}>
-            <FormControl fullWidth margin="normal">
-                <InputLabel>Filter by section</InputLabel>
-                <Select value={section} onChange={handleSectionChange}>
-                    <MenuItem value="">
-                        <em>All</em>
-                    </MenuItem>
-                    {[...new Set(items.map(item => item.section))].map((section) => (
-                        <MenuItem key={section} value={section}>{section}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
-            <TableContainer sx={{ maxHeight: 600 }}>
-                <Table stickyHeader aria-label='sticky table'>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell sortDirection={orderBy === 'name' ? order : false} sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>
-                                <TableSortLabel
-                                    active={orderBy === 'name'}
-                                    direction={orderBy === 'name' ? order : 'asc'}
-                                    onClick={handleRequestSort('name')}
-                                    sx={{ color: '#71717A', '&.Mui-active': {color: '#71717A !important'}, '& .MuiTableSortLabel-icon': {color: '#71717A !important'} }}
-                                >
-                                    Name
-                                </TableSortLabel>
-                            </TableCell>
-                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Section</TableCell>
-                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Price (€)</TableCell>
-                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Price / 100g (€)</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {sortedItems.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item) => (
-                            <TableRow key={item.id}>
-                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.name}</TableCell>
-                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.section}</TableCell>
-                                <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>${item.price.toFixed(2)}</TableCell>
-                                <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.weight} kg</TableCell>
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+            <Paper sx={{ padding: 2, width: '80%', maxWidth: 1200 }}>
+                <Box display="flex" justifyContent="flex-end">
+                    <FormControl sx={{ minWidth: 160 }} margin="normal">
+                        <InputLabel>Filter by section</InputLabel>
+                        <Select value={section} onChange={handleSectionChange}>
+                            <MenuItem value="">
+                                <em>All</em>
+                            </MenuItem>
+                            {[...new Set(items.map(item => item.section))].map((section) => (
+                                <MenuItem key={section} value={section}>{section}</MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                </Box>
+                <TableContainer sx={{ maxHeight: 600 }}>
+                    <Table stickyHeader aria-label='sticky table'>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell sortDirection={orderBy === 'name' ? order : false} sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>
+                                    <TableSortLabel
+                                        active={orderBy === 'name'}
+                                        direction={orderBy === 'name' ? order : 'asc'}
+                                        onClick={handleRequestSort('name')}
+                                        sx={{ color: '#71717A', '&.Mui-active': {color: '#71717A !important'}, '& .MuiTableSortLabel-icon': {color: '#71717A !important'} }}
+                                    >
+                                        Name
+                                    </TableSortLabel>
+                                </TableCell>
+                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Section</TableCell>
+                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Price (€)</TableCell>
+                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Price / 100g (€)</TableCell>
                             </TableRow>
-                        ))}
-                        {emptyRows > 0 && (
-                            <TableRow style={{ height: 53 * emptyRows }}>
-                                <TableCell colSpan={4} sx={{ border: '1px solid rgba(224, 224, 224, 1)' }} />
-                            </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 20, 50]}
-                component="div"
-                count={sortedItems.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-        </Paper>
+                        </TableHead>
+                        <TableBody>
+                            {sortedItems.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item) => (
+                                <TableRow key={item.id}>
+                                    <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.name}</TableCell>
+                                    <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.section}</TableCell>
+                                    <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>${item.price.toFixed(2)}</TableCell>
+                                    <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.weight} kg</TableCell>
+                                </TableRow>
+                            ))}
+                            {emptyRows > 0 && (
+                                <TableRow style={{ height: 53 * emptyRows }}>
+                                    <TableCell colSpan={4} sx={{ border: '1px solid rgba(224, 224, 224, 1)' }} />
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <TablePagination
+                    rowsPerPageOptions={[10, 20, 50]}
+                    component="div"
+                    count={sortedItems.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+            </Paper>
+        </Box>
     );
 };
 
