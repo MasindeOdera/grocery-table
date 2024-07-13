@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, TablePagination, Paper, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent
+    Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, TablePagination, Paper, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, Typography
 } from '@mui/material';
 import { GroceryItem } from './types';
 
@@ -79,18 +79,19 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                 <Table stickyHeader aria-label='sticky table'>
                     <TableHead>
                         <TableRow>
-                            <TableCell sortDirection={orderBy === 'name' ? order : false} sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>
+                            <TableCell sortDirection={orderBy === 'name' ? order : false} sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>
                                 <TableSortLabel
                                     active={orderBy === 'name'}
                                     direction={orderBy === 'name' ? order : 'asc'}
                                     onClick={handleRequestSort('name')}
+                                    sx={{ color: '#71717A', '&.Mui-active': {color: '#71717A !important'}, '& .MuiTableSortLabel-icon': {color: '#71717A !important'} }}
                                 >
                                     Name
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Section</TableCell>
-                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Price (€)</TableCell>
-                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Price / 100g (€)</TableCell>
+                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Section</TableCell>
+                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Price (€)</TableCell>
+                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Price / 100g (€)</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
