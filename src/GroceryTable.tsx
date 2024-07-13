@@ -89,8 +89,8 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                                 </TableSortLabel>
                             </TableCell>
                             <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Section</TableCell>
-                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Price</TableCell>
-                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Weight</TableCell>
+                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Price (€)</TableCell>
+                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Price / 100g (€)</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -98,8 +98,8 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                             <TableRow key={item.id}>
                                 <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.name}</TableCell>
                                 <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.section}</TableCell>
-                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>${item.price.toFixed(2)}</TableCell>
-                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.weight} kg</TableCell>
+                                <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>${item.price.toFixed(2)}</TableCell>
+                                <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.weight} kg</TableCell>
                             </TableRow>
                         ))}
                         {emptyRows > 0 && (
