@@ -117,15 +117,23 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <TablePagination
-                    rowsPerPageOptions={[10, 20, 50]}
-                    component="div"
-                    count={sortedItems.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                />
+                <Box display="flex" justifyContent="flex-start">
+                    <TablePagination
+                        rowsPerPageOptions={[10, 20, 50]}
+                        component="div"
+                        count={sortedItems.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                        sx={{
+                            '& .MuiToolbar-root': {
+                                paddingLeft: 0,
+                                paddingRight: 24,
+                            }
+                        }}
+                    />
+                </Box>
             </Paper>
         </Box>
     );
