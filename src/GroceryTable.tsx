@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, TablePagination, Paper, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, Box
+    Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, TablePagination, Paper, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, Box, Typography
 } from '@mui/material';
 import { GroceryItem } from './types';
 
@@ -65,7 +65,10 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
     return (
         <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
             <Paper sx={{ padding: 2, width: '80%', maxWidth: 1200 }}>
-                <Box display="flex" justifyContent="flex-end">
+                <Box display="flex" justifyContent="space-between" alignItems="center" marginBottom={2}>
+                    <Typography variant="h6" component="div">
+                        Today's groceries
+                    </Typography>
                     <FormControl sx={{ minWidth: 160 }} margin="normal">
                         <InputLabel>Filter by section</InputLabel>
                         <Select value={section} onChange={handleSectionChange}>
