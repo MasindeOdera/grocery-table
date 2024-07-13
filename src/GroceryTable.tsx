@@ -63,9 +63,9 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, sortedItems.length - page * rowsPerPage);
 
     return (
-        <Paper>
+        <Paper sx={{ maxWidth: 800 }}>
             <FormControl fullWidth margin="normal">
-                <InputLabel>Section</InputLabel>
+                <InputLabel>Filter by section</InputLabel>
                 <Select value={section} onChange={handleSectionChange}>
                     <MenuItem value="">
                         <em>All</em>
@@ -75,11 +75,11 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                     ))}
                 </Select>
             </FormControl>
-            <TableContainer>
-                <Table>
+            <TableContainer sx={{ maxHeight: 600 }}>
+                <Table stickyHeader aria-label='sticky table'>
                     <TableHead>
                         <TableRow>
-                            <TableCell sortDirection={orderBy === 'name' ? order : false}>
+                            <TableCell sortDirection={orderBy === 'name' ? order : false} sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>
                                 <TableSortLabel
                                     active={orderBy === 'name'}
                                     direction={orderBy === 'name' ? order : 'asc'}
@@ -88,23 +88,23 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                                     Name
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell>Section</TableCell>
-                            <TableCell>Price</TableCell>
-                            <TableCell>Weight</TableCell>
+                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Section</TableCell>
+                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Price</TableCell>
+                            <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>Weight</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {sortedItems.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item) => (
                             <TableRow key={item.id}>
-                                <TableCell>{item.name}</TableCell>
-                                <TableCell>{item.section}</TableCell>
-                                <TableCell>${item.price.toFixed(2)}</TableCell>
-                                <TableCell>{item.weight} kg</TableCell>
+                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.name}</TableCell>
+                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.section}</TableCell>
+                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>${item.price.toFixed(2)}</TableCell>
+                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.weight} kg</TableCell>
                             </TableRow>
                         ))}
                         {emptyRows > 0 && (
                             <TableRow style={{ height: 53 * emptyRows }}>
-                                <TableCell colSpan={4} />
+                                <TableCell colSpan={4} sx={{ border: '1px solid rgba(224, 224, 224, 1)' }} />
                             </TableRow>
                         )}
                     </TableBody>
