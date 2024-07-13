@@ -106,7 +106,7 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                                     <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.name}</TableCell>
                                     <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.section}</TableCell>
                                     <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.price.toFixed(2)}</TableCell>
-                                    <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.weight} kg</TableCell>
+                                    <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.weight}</TableCell>
                                 </TableRow>
                             ))}
                             {emptyRows > 0 && (
