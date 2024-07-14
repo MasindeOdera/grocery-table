@@ -10,14 +10,12 @@ import {
     TablePagination, 
     Paper, 
     FormControl, 
-    InputLabel, 
     Select, 
     MenuItem, 
     SelectChangeEvent, 
     Box, 
     Typography, 
     InputAdornment,
-    OutlinedInput
 } from '@mui/material';
 import { TuneSharp as TuneSharpIcon } from '@mui/icons-material';
 import { GroceryItem } from './types';
@@ -129,7 +127,16 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                                 </TableCell>
                                 <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Section</TableCell>
                                 <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Price (€)</TableCell>
-                                <TableCell sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>Price / 100g (€)</TableCell>
+                                <TableCell sortDirection={orderBy === 'name' ? order : false} sx={{ border: '1px solid rgba(224, 224, 224, 1)', color: '#71717A' }}>
+                                    <TableSortLabel
+                                        active={orderBy === 'weight'}
+                                        direction={orderBy === 'weight' ? order : 'asc'}
+                                        onClick={handleRequestSort('weight')}
+                                        sx={{ color: '#71717A', '&.Mui-active': {color: '#71717A !important'}, '& .MuiTableSortLabel-icon': {color: '#71717A !important'} }}
+                                    >
+                                        Price / 100g (€)
+                                    </TableSortLabel>
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
