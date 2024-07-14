@@ -16,7 +16,6 @@ interface GroceryTableComponentProps {
 }
 
 const GroceryTableComponent: React.FC<GroceryTableComponentProps> = ({ items, order, orderBy, handleRequestSort, page, rowsPerPage }) => {
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, items.length - page * rowsPerPage);
 
     return (
         <TableContainer sx={{ flexGrow: 1, maxHeight: 53 * 10, overflowY: 'auto' }}>
@@ -67,11 +66,6 @@ const GroceryTableComponent: React.FC<GroceryTableComponentProps> = ({ items, or
                             <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.weight}</TableCell>
                         </TableRow>
                     ))}
-                    {emptyRows > 0 && (
-                        <TableRow style={{ height: 53 * emptyRows }}>
-                            <TableCell colSpan={4} sx={{ border: '1px solid rgba(224, 224, 224, 1)' }} />
-                        </TableRow>
-                    )}
                 </TableBody>
             </Table>
         </TableContainer>
