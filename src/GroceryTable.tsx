@@ -1,7 +1,25 @@
 import React, { useState } from 'react';
 import {
-    Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, TablePagination, Paper, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, Box, Typography
+    Table, 
+    TableBody, 
+    TableCell, 
+    TableContainer, 
+    TableHead, 
+    TableRow, 
+    TableSortLabel, 
+    TablePagination, 
+    Paper, 
+    FormControl, 
+    InputLabel, 
+    Select, 
+    MenuItem, 
+    SelectChangeEvent, 
+    Box, 
+    Typography, 
+    InputAdornment,
+    OutlinedInput
 } from '@mui/material';
+import { TuneSharp as TuneSharpIcon } from '@mui/icons-material';
 import { GroceryItem } from './types';
 
 interface GroceryTableProps {
@@ -69,9 +87,23 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                     <Typography variant="h6" component="div">
                         Today's groceries
                     </Typography>
-                    <FormControl sx={{ minWidth: 160 }} margin="normal">
-                        <InputLabel>Filter by section</InputLabel>
-                        <Select value={section} onChange={handleSectionChange}>
+                    <FormControl sx={{ minWidth: 200 }} margin="normal">
+                        <Select 
+                            value={section} 
+                            onChange={handleSectionChange}
+                            displayEmpty
+                            startAdornment={
+                                <InputAdornment position="start">
+                                    <TuneSharpIcon />
+                                </InputAdornment>
+                            }
+                            renderValue={(selected) => {
+                                if (selected === '') {
+                                    return <em>Filter by section</em>;
+                                }
+                                return selected;
+                            }}
+                            >
                             <MenuItem value="">
                                 <em>All</em>
                             </MenuItem>
