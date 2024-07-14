@@ -76,11 +76,9 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
 
     const sortedItems = filteredItems.sort(getComparator(order, orderBy));
 
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, sortedItems.length - page * rowsPerPage);
-
     return (
         <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-            <Paper sx={{ padding: 2, width: '80%', maxWidth: 1200 }}>
+            <Paper sx={{ padding: 2, width: '80%', maxWidth: 1200, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                 <Box display="flex" justifyContent="space-between" alignItems="center" marginBottom={2}>
                     <Typography variant="h6" component="div">
                         Today's groceries
@@ -111,7 +109,7 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                         </Select>
                     </FormControl>
                 </Box>
-                <TableContainer sx={{ maxHeight: 600 }}>
+                <TableContainer sx={{ flexGrow: 1, maxHeight: 53 * 10, overflowY: 'auto' }}>
                     <Table stickyHeader aria-label='sticky table'>
                         <TableHead>
                             <TableRow>
@@ -148,11 +146,6 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                                     <TableCell align="right" sx={{ border: '1px solid rgba(224, 224, 224, 1)' }}>{item.weight}</TableCell>
                                 </TableRow>
                             ))}
-                            {emptyRows > 0 && (
-                                <TableRow style={{ height: 53 * emptyRows }}>
-                                    <TableCell colSpan={4} sx={{ border: '1px solid rgba(224, 224, 224, 1)' }} />
-                                </TableRow>
-                            )}
                         </TableBody>
                     </Table>
                 </TableContainer>
