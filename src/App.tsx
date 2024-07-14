@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-// import GroceryTable from './GroceryTable';
 import GroceryTable from './Components/GroceryTable';
 
 const groceryItems = [
