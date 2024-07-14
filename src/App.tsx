@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import GroceryTable from './GroceryTable';
+// import GroceryTable from './GroceryTable';
+import GroceryTable from './Components/GroceryTable';
 
 const groceryItems = [
     { id: 1, name: 'Bananas', section: 'Produce', price: 1.29, weight: 0.5 },
