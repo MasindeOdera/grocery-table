@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Table Component
+
+This table has been populated with provided dummy data, constructed with React, TypeScript & Material UI for styling purposes. \
+This table of groceries can also be seen here: [Grocery Table](https://masindeodera.github.io/grocery-table/) 
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -23,8 +28,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Table Component
-
-This table has been populated with provided dummy data, constructed with React, TypeScript & Material UI for styling purposes. \
-This table of groceries can also be seen here: [Grocery Table](https://masindeodera.github.io/grocery-table/) 
