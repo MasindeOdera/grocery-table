@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 import { TuneSharp as TuneSharpIcon } from '@mui/icons-material';
 import { GroceryItem } from './types';
+import { visuallyHidden } from '@mui/utils';
 
 interface GroceryTableProps {
     items: GroceryItem[];
@@ -110,6 +111,7 @@ const GroceryTable: React.FC<GroceryTableProps> = ({ items }) => {
                     </FormControl>
                 </Box>
                 <TableContainer sx={{ flexGrow: 1, maxHeight: 53 * 10, overflowY: 'auto' }}>
+                    <caption style={visuallyHidden}>List of groceries and their details</caption>
                     <Table stickyHeader aria-label='sticky table'>
                         <TableHead>
                             <TableRow>
